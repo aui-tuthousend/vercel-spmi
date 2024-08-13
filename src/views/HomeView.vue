@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import ChooseSheet from "@/components/ChooseSheet.vue";
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <ChooseSheet/>
   </main>
 </template>
