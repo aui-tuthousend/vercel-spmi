@@ -13,7 +13,7 @@ function notify(){
 
 watchEffect(async ()=> {
   loading.value = true;
-  let response = await fetch(`http://127.0.0.1:8000/api/getPeriode/${jurusan.value}`);
+  let response = await fetch(`https://spmi.annafilah.id/api/getPeriode/${jurusan.value}`);
   per.value = await response.json();
   loading.value = false;
 

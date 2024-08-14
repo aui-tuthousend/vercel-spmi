@@ -18,7 +18,7 @@ const jurusan = ref(route.params.jurusan);
 
 watchEffect(async ()=> {
   loading.value = true;
-  let response = await fetch(`http://127.0.0.1:8000//api/getPenetapan/${jurusan.value}/${periode.value}/${currentSheet.value}/${current.value}`);
+  let response = await fetch(`https://spmi.annafilah.id/api/getPenetapan/${jurusan.value}/${periode.value}/${currentSheet.value}/${current.value}`);
   standarData.value = await response.json();
 
   loading.value = false;
