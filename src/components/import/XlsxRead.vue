@@ -1,7 +1,7 @@
 <script>
 import { h } from 'vue';
 import WorkbookHandler from "../../mixins/WorkbookHandler.js";
-import { globalPolyfill } from "../../polyfills.js";
+import { globalPolyfill } from "@/polyfills.js";
 import { read } from "xlsx";
 
 export default {
@@ -48,7 +48,7 @@ export default {
         let binary = "";
         const bytes = new Uint8Array(e.target.result);
         const length = bytes.byteLength;
-        for (var i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
           binary += String.fromCharCode(bytes[i]);
         }
         this._workbook = this._read(binary, {
