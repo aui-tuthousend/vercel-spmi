@@ -32,7 +32,7 @@ watch(count, async () => {
 })
 
 watchEffect(async ()=> {
-  let response = await fetch(`http://127.0.0.1:8000/api/getLink/${props.idBukti}`);
+  let response = await fetch(`https://spmi.annafilah.id/api/getLink/${props.idBukti}`);
   savedLink.value = await response.json();
 
   console.log(count.value);
