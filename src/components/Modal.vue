@@ -39,30 +39,30 @@ watchEffect(async ()=> {
 })
 
 const addLink = () => {
-  // if (judulLink.value === '' || link.value === ''){
-  //   alert("tidak boleh kosong :)")
-  //   return;
-  // }
-  // axios.post('/api/submitLink', {data: {idBukti: props.idBukti, judul_link: judulLink.value, link: link.value}})
-  //     .then(response => {
-  //       console.log('Data submitted successfully:', response.data);
-  //       judulLink.value = '';
-  //       link.value = '';
-  //       count.value++;
-  //     })
-  //     .catch(error => {
-  //       console.error('Error submitting data:', error.response.data);
-  //     });
+  if (judulLink.value === '' || link.value === ''){
+    alert("tidak boleh kosong :)")
+    return;
+  }
+  axios.post('https://spmi.annafilah.id/api/submitLink', {data: {idBukti: props.idBukti, judul_link: judulLink.value, link: link.value}})
+      .then(response => {
+        console.log('Data submitted successfully:', response.data);
+        judulLink.value = '';
+        link.value = '';
+        count.value++;
+      })
+      .catch(error => {
+        console.error('Error submitting data:', error.response.data);
+      });
 }
 function removeTodo(IdLink) {
-  // axios.post('/api/deleteLink', {idLink: {idL: IdLink}})
-  //     .then(response => {
-  //       console.log('link terhapus:', response.data);
-  //       count.value--;
-  //     })
-  //     .catch(err => {
-  //       console.log('Error menghapus:', err.response.data);
-  //     });
+  axios.post('https://spmi.annafilah.id/api/deleteLink', {idLink: {idL: IdLink}})
+      .then(response => {
+        console.log('link terhapus:', response.data);
+        count.value--;
+      })
+      .catch(err => {
+        console.log('Error menghapus:', err.response.data);
+      });
 }
 
 const openLink = (link) => {

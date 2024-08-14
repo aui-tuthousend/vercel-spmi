@@ -37,25 +37,25 @@ const saveEval = (idBuktiPelaksanaan, komenEval, adjusment, idP) => {
 };
 
 const submitData = () => {
-  // if (role.value === 'pelaksanaan'){
-  //   axios.post('/api/submitPelaksanaan', {data: formData.value})
-  //       .then(response => {
-  //         console.log('Data submitted successfully:', response.data);
-  //         props.refresh();
-  //       })
-  //       .catch(error => {
-  //         console.error('Error submitting data:', error.response.data);
-  //       });
-  // } else {
-  //   axios.post('/api/submitEvaluasi', {data: dataEval.value})
-  //       .then(response => {
-  //         console.log('Data submitted successfully:', response.data);
-  //         props.refresh();
-  //       })
-  //       .catch(error => {
-  //         console.error('Error submitting data:', error.response.data);
-  //       });
-  // }
+  if (role.value === 'pelaksanaan'){
+    axios.post('https://spmi.annafilah.id/api/submitPelaksanaan', {data: formData.value})
+        .then(response => {
+          console.log('Data submitted successfully:', response.data);
+          props.refresh();
+        })
+        .catch(error => {
+          console.error('Error submitting data:', error.response.data);
+        });
+  } else {
+    axios.post('https://spmi.annafilah.id/api/submitEvaluasi', {data: dataEval.value})
+        .then(response => {
+          console.log('Data submitted successfully:', response.data);
+          props.refresh();
+        })
+        .catch(error => {
+          console.error('Error submitting data:', error.response.data);
+        });
+  }
 }
 
 
