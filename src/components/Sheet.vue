@@ -44,13 +44,18 @@ const refreshPage = () => {
     <!--    {{currentSheet}}-->
     <br>
     <br>
+    <div class="row">
+
     <template v-for="t in tipe">
+      <div class="row">
       <input type="radio"
              :id="t"
              :value="t"
              v-model="current">
       <label :for="t" style="margin-right: 0.5rem;">{{t}}</label>
+      </div>
     </template>
+    </div>
     <div v-if="standarData ==='Null'">
       Belum ada data :)
     </div>
@@ -68,7 +73,6 @@ const refreshPage = () => {
 .bodi{
   width: 100vw;
   height: 100vh;
-  padding: 3%;
 }
 
 button {
@@ -84,5 +88,9 @@ button {
 .dt{
   overflow-x: auto;
   padding-bottom: 3%;
+}
+
+.row{
+  display: flex;
 }
 </style>

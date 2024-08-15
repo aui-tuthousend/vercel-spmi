@@ -90,7 +90,7 @@ const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
   <br>
   <br>
   <button @click="submitData">Save</button>
-  <table :class="role">
+  <table :class="role" class="table-responsive table-danger">
     <thead>
     <tr>
       <th colspan="3">Penetapan</th>
