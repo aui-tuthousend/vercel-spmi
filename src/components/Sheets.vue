@@ -1,6 +1,7 @@
 <script setup>
 import Modal from "@/components/Modal.vue";
 import {ref} from "vue";
+import CustomButton from "@/components/comp/custom-button.vue";
 const props = defineProps({
   data: Object, refresh: Function
 });
@@ -81,7 +82,7 @@ const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
 
 <template>
   <br>
-  <label for="mo">role: </label>
+  <h2 class="font-garmond">Role: </h2>
   <select id="mo" v-model="role" style="width: 10rem;">
     <option>pelaksanaan</option>
     <option>superUser</option>
@@ -89,7 +90,7 @@ const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
   <!--    {{role}}-->
   <br>
   <br>
-  <button @click="submitData">Save</button>
+  <custom-button @click="submitData">Save</custom-button>
   <table :class="role" class="table-responsive table-danger">
     <thead>
     <tr>
@@ -167,26 +168,20 @@ const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
 
 
 <style scoped>
+
 .superUser {
   width: 120vw;
-  table-layout: fixed;
-  border-collapse: collapse;
   margin-top: 1rem;
 }
 
 .pelaksanaan{
   width: 92vw;
-}
-
-th, td {
-  padding: 8px;
-  border: 1px solid #ccc;
-  text-align: center;
-  word-wrap: break-word;
+  margin-top: 1rem;
 }
 
 thead th {
-  background-color: #f5f5f5;
+  background-color: #dda15e;
+  color: #283618;
 }
 
 textarea {

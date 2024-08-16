@@ -1,15 +1,15 @@
 <script setup>
 import {ref, watchEffect} from "vue";
+import CustomButton from "@/components/comp/custom-button.vue";
+import CustomSelect from "@/components/comp/custom-select.vue";
+document.title = "Pilih Sheet";
 
 const message = ref('upload new sheet')
 const jurusan = ref('a')
 const periode = ref('0')
 const per = ref([])
 const loading = ref(true);
-
-function notify(){
-  alert('Pilih jurusan 😈')
-}
+const jur = ['Teknik Informatika', 'Teknik Elektro', 'Teknik Lingkungan', 'Sistem Informasi'];
 
 watchEffect(async ()=> {
   loading.value = true;
@@ -27,45 +27,45 @@ watchEffect(async ()=> {
   <div class="bodi">
     <div class="c1">
       <div class="c1-1">
-        <h1>Mode Super User</h1>
-        <button>
+        <h1 class="font-rubik">Mode Super User</h1>
+
+        <custom-button>
           <router-link
               to="/import"
               class="custom-router-link"
               :title="message"
-          ><h4>+</h4></router-link>
-        </button>
+          ><h2>+</h2></router-link>
+        </custom-button>
+
       </div>
     </div>
 
     <div class="c2">
-      <h5>Pilih Jurusan:</h5>
+      <h2 class="font-garmond">Pilih Jurusan:</h2>
       <div>
-        <select v-model="jurusan" class="pilihSheet" required>
-          <option disabled value="">select sheet</option>
-          <option>Teknik Informatika</option>
-          <option>Teknik Elektro</option>
-          <option>Teknik Lingkungan</option>
-          <option>Sistem Informasi</option>
-        </select>
 
-        <button v-if="jurusan == 'a'" @click.prevent="notify"><h5>go</h5></button>
-        <div v-else-if="per.length == 0">
-          <p>Sheet dengan jurusan {{ jurusan }} belum ada</p>
+        <custom-select :data="jur" :wid="50" @response="(data) => jurusan = data"/>
+
+        <p v-if="loading">Loading...</p>
+        <div v-if="per.length === 0">
+          <p v-if="jurusan !== 'a'" :hidden="loading">Sheet dengan jurusan {{ jurusan }} belum ada</p>
         </div>
         <div v-else class="periode">
-          <h5>Pilih Periode:</h5>
+          <h2 class="font-garmond">Pilih Periode:</h2>
+
+          <div class="row-ai-c">
+
           <select v-model="periode" class="pilihSheet" required>
             <option v-for="p in per" :value="p.periode">{{ p.periode }}</option>
           </select>
           <!--                {{idS}}-->
-
-          <button>
+          <custom-button>
             <router-link
                 :to="{ name: 'Sheet', params: {jurusan: jurusan, periode: periode}}"
-                class="custom-router-link"
-            ><h5>go</h5></router-link>
-          </button>
+                class="custom-router-link">
+              <h3>go</h3></router-link>
+          </custom-button>
+          </div>
         </div>
       </div>
 
@@ -104,11 +104,18 @@ watchEffect(async ()=> {
 .custom-router-link {
   text-decoration: none;
   color: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-router-link:hover{
+  background: none;
 }
 
 .pilihSheet{
-  width: 60%;
+  width: 30rem;
 }
+
 
 .periode{
   margin-top: 3rem;

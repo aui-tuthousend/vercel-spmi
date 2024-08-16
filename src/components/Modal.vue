@@ -18,13 +18,16 @@ watch(escape, (v) =>{
 const link = ref('')
 const judulLink = ref('')
 const count = ref(0);
+const loading = ref(true);
 
 const savedLink = ref([]);
 
 watch(count, async () => {
   try {
+    loading.value = true;
     let response = await fetch(`https://spmi.annafilah.id/api/getLink/${props.idBukti}`);
     savedLink.value = await response.json();
+    loading.value = false;
     console.log(count.value);
   } catch (error){
     console.error('Error submitting data:', error.response.data);
@@ -32,8 +35,10 @@ watch(count, async () => {
 })
 
 watchEffect(async ()=> {
+  loading.value = true;
   let response = await fetch(`https://spmi.annafilah.id/api/getLink/${props.idBukti}`);
   savedLink.value = await response.json();
+  loading.value = false;
 
   console.log(count.value);
 })
@@ -78,7 +83,7 @@ const openLink = (link) => {
       <!--            <h2>{{idBukti}}</h2>-->
       <!--            <input type="text" name="" id="">-->
 
-      <p v-if="savedLink.length < 1">Belum ada Link</p>
+      <p v-if="savedLink.length < 1" :hidden="loading">Belum ada Link</p>
       <ul>
         <li v-for="link in savedLink" :key="link.id">
           <div class="link">

@@ -2,6 +2,12 @@
 import {ref, watchEffect} from 'vue';
 import {useRoute} from "vue-router";
 import Sheets from "@/components/Sheets.vue"
+import CustomSelect from "@/components/comp/custom-select.vue";
+
+const route = useRoute();
+const periode = ref(route.params.periode);
+const jurusan = ref(route.params.jurusan);
+document.title = `${jurusan.value} ${periode.value}`
 
 const standarData = ref([]);
 const loading = ref(true);
@@ -11,9 +17,7 @@ const current = ref(tipe[0]);
 const tipeSheet = ['pendidikan', 'penelitian', 'pengabdian'];
 const currentSheet = ref(tipeSheet[0]);
 
-const route = useRoute();
-const periode = ref(route.params.periode);
-const jurusan = ref(route.params.jurusan);
+
 
 
 watchEffect(async ()=> {
@@ -35,13 +39,11 @@ const refreshPage = () => {
 <template>
   <div class="bodi">
 
-    <router-link class="pop" to="/">Home</router-link>
-    <!--    <button class="pop">Save</button>-->
-    <p>tipe:</p>
-    <select v-model="currentSheet" class="tipe" required>
-      <option v-for="t in tipeSheet">{{t}}</option>
-    </select>
-    <!--    {{currentSheet}}-->
+<!--    <router-link class="pop" to="/">Home</router-link>-->
+    <h2 class="font-garmond">Tipe:</h2>
+    <custom-select :data="tipeSheet" :wid="20" @response="(data) => currentSheet = data"/>
+
+
     <br>
     <br>
     <div class="row">
@@ -71,8 +73,10 @@ const refreshPage = () => {
 
 <style scoped>
 .bodi{
+  padding: 4% 0 0 2%;
   width: 100vw;
   height: 100vh;
+  background: white;
 }
 
 button {
@@ -87,10 +91,15 @@ button {
 
 .dt{
   overflow-x: auto;
-  padding-bottom: 3%;
+  padding: 0% 5% 3% 0%;
 }
 
-.row{
-  display: flex;
+.dt::-webkit-scrollbar{
+  display: none;
 }
+
+.tipe{
+  width: 40%;
+}
+
 </style>
