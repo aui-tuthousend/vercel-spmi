@@ -75,6 +75,7 @@ const refreshPage = () => {
   width: 100vw;
   height: 100vh;
   background: white;
+  color: black;
 }
 
 button {

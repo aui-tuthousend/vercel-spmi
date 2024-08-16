@@ -81,6 +81,8 @@ watchEffect(async ()=> {
   width: 100vw;
   height: 100vh;
   padding: 3%;
+  background: white;
+  color: black;
 }
 
 .c1{
