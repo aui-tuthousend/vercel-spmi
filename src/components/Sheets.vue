@@ -83,8 +83,6 @@ const openPopup = (indicator) =>{
 
 
 <template>
-  <div class="bodi">
-
   <br>
   <h2 class="font-garmond">Role: </h2>
 
@@ -164,17 +162,11 @@ const openPopup = (indicator) =>{
          :role="role"
   >
   </Modal>
-  </div>
 </template>
 
 
 
 <style scoped>
-
-.bodi{
-  background: white;
-  color: black;
-}
 
 .superUser {
   width: 120vw;
