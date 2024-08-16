@@ -14,7 +14,7 @@ watch(jur, (newValue) => {
 </script>
 
 <template>
-  <select v-model="jur" :style="{width: props.wid + 'rem'}">
+  <select v-model="jur" :style="{width: props.wid + '%'}">
     <option v-for="d in props.data">{{d}}</option>
   </select>
 </template>

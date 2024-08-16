@@ -108,12 +108,8 @@ watchEffect(async ()=> {
   height: 100%;
 }
 
-.custom-router-link:hover{
-  background: none;
-}
-
 .pilihSheet{
-  width: 30rem;
+  width: 30%;
 }
 
 
