@@ -2,14 +2,17 @@
 import Modal from "@/components/Modal.vue";
 import {ref} from "vue";
 import CustomButton from "@/components/comp/custom-button.vue";
+import CustomSelect from "@/components/comp/custom-select.vue";
 const props = defineProps({
   data: Object, refresh: Function
 });
 
 const formData = ref([])
 const dataEval = ref([])
+const roleUser = ['pelaksanaan', 'superUser'];
+const role = ref(roleUser[0]);
 
-const role = ref('pelaksanaan')
+const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
 
 const save = (idIndikator, bukti, idP) => {
   const newData = {idIndikator: idIndikator, bukti: bukti, idPelaksanaan: idP };
@@ -71,7 +74,6 @@ const openPopup = (indicator) =>{
   togglePopup();
 }
 
-const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
 
 // document.addEventListener("contextmenu", function (event){
 //     alert("gaboleh klik kanan ea");
@@ -83,11 +85,8 @@ const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
 <template>
   <br>
   <h2 class="font-garmond">Role: </h2>
-  <select id="mo" v-model="role" style="width: 10rem;">
-    <option>pelaksanaan</option>
-    <option>superUser</option>
-  </select>
-  <!--    {{role}}-->
+
+  <custom-select :data="roleUser" :wid="10" @response="(data) => role = data"/>
   <br>
   <br>
   <custom-button @click="submitData">Save</custom-button>

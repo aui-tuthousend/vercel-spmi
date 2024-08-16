@@ -42,8 +42,6 @@ const refreshPage = () => {
 <!--    <router-link class="pop" to="/">Home</router-link>-->
     <h2 class="font-garmond">Tipe:</h2>
     <custom-select :data="tipeSheet" :wid="20" @response="(data) => currentSheet = data"/>
-
-
     <br>
     <br>
     <div class="row">
