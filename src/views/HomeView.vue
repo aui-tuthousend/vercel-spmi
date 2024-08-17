@@ -12,6 +12,7 @@ import ChooseSheet from "@/components/ChooseSheet.vue";
 
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Mono+One&display=swap');
 
 .rubik-mono-one-regular {
   font-family: "Rubik Mono One", monospace;
@@ -25,6 +26,12 @@ import ChooseSheet from "@/components/ChooseSheet.vue";
 
   .font-garmond{
     font-family: "EB Garamond", serif;
+  }
+
+  .font-poppin{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
   }
 
   body {

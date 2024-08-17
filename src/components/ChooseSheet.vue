@@ -23,6 +23,7 @@ watchEffect(async ()=> {
 </script>
 
 <template>
+<!--  <router-link to="/playground">playground</router-link>-->
 
   <div class="bodi">
     <div class="c1">

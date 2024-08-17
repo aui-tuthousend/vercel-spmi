@@ -1,8 +1,10 @@
 <script setup>
-import Modal from "@/components/Modal.vue";
-import {ref} from "vue";
+import {defineAsyncComponent, ref} from "vue";
 import CustomButton from "@/components/comp/custom-button.vue";
 import CustomSelect from "@/components/comp/custom-select.vue";
+const Modal = defineAsyncComponent(({
+  loader: () => import('../components/Modal.vue'),
+}));
 const props = defineProps({
   data: Object, refresh: Function
 });
@@ -84,29 +86,30 @@ const openPopup = (indicator) =>{
 
 <template>
   <br>
-  <h2 class="font-garmond">Role: </h2>
+  <h2 class="font-poppin">Role: </h2>
 
   <custom-select :data="roleUser" :wid="10" @response="(data) => role = data"/>
   <br>
   <br>
   <custom-button @click="submitData">Save</custom-button>
+  <div class="table">
   <table :class="role" class="table-responsive table-danger">
     <thead>
     <tr>
-      <th colspan="3">Penetapan</th>
-      <th colspan="2">Pelaksanaan</th>
-      <th colspan="5" v-if="role === 'superUser'">Evaluasi</th>
+      <th colspan="3"><h3 class="font-poppin">Penetapan</h3></th>
+      <th colspan="2"><h3 class="font-poppin">Pelaksanaan</h3></th>
+      <th colspan="5" v-if="role === 'superUser'"><h3 class="font-poppin">Evaluasi</h3></th>
     </tr>
     <tr>
-      <th rowspan="">Standar</th>
-      <th>Indicator</th>
-      <th>Target</th>
-      <th>Komentar</th>
-      <th>Link Bukti</th>
+      <th rowspan=""><h3 class="font-poppin">Standar</h3></th>
+      <th><h3 class="font-poppin">Indicator</h3></th>
+      <th><h3 class="font-poppin">Target</h3></th>
+      <th><h3 class="font-poppin">Komentar</h3></th>
+      <th><h3 class="font-poppin">Link Bukti</h3></th>
       <template v-if="role === 'superUser'">
-        <th  colspan="2">Komentar</th>
-        <th colspan="2">Adjusment</th>
-        <th>Link Bukti</th>
+        <th colspan="2"><h3 class="font-poppin">Komentar</h3></th>
+        <th colspan="2"><h3 class="font-poppin">Adjusment</h3></th>
+        <th><h3 class="font-poppin">Link Bukti</h3></th>
       </template>
     </tr>
     </thead>
@@ -155,6 +158,7 @@ const openPopup = (indicator) =>{
 
     </tbody>
   </table>
+  </div>
 
   <Modal v-if="popupTriggers"
          :idBukti="selectedIndicator"
@@ -167,6 +171,15 @@ const openPopup = (indicator) =>{
 
 
 <style scoped>
+
+.table{
+  overflow-x: auto;
+  padding-right: 2%;
+}
+
+.table::-webkit-scrollbar{
+  display: none;
+}
 
 .superUser {
   width: 120vw;

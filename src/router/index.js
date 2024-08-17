@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Sheet from "@/components/Sheet.vue";
 import Import from "@/components/import/import.vue";
+import PlayGround from "@/components/PlayGround.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/import',
       name: 'Import',
       component: Import
+    },
+    {
+      path: '/playground',
+      name: 'Playground',
+      component: PlayGround
     },
   ]
 })

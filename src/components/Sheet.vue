@@ -39,8 +39,7 @@ const refreshPage = () => {
 <template>
   <div class="bodi">
 
-<!--    <router-link class="pop" to="/">Home</router-link>-->
-    <h2 class="font-garmond">Tipe:</h2>
+    <h2 class="font-poppin">Tipe:</h2>
     <custom-select :data="tipeSheet" :wid="20" @response="(data) => currentSheet = data"/>
     <br>
     <br>
@@ -73,6 +72,7 @@ const refreshPage = () => {
 .bodi{
   padding: 4% 0 0 2%;
   width: 100vw;
+  overflow-x: hidden;
   //height: 100vh; overflow-y: auto;
   background: white;
   color: black;
@@ -83,19 +83,13 @@ button {
   height: 1rem;
 }
 
-.pop{
-  padding: 3px;
-  height: 2rem;
-}
 
 .dt{
-  overflow-x: auto;
+  width: 100vw;
+  overflow-x: hidden;
   padding: 0% 5% 3% 0%;
 }
 
-.dt::-webkit-scrollbar{
-  display: none;
-}
 
 .tipe{
   width: 40%;
