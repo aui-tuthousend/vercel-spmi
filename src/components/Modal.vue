@@ -6,7 +6,7 @@ const {escape} = useMagicKeys()
 
 const props = defineProps({
   togglePopup: Function,
-  idBukti: String,
+  idBukti: Number,
   role: String,
 });
 
@@ -46,7 +46,7 @@ watchEffect(async ()=> {
 
 const addLink = () => {
   if (judulLink.value === '' || link.value === ''){
-    alert("tidak boleh kosong :)")
+    alert("judul atau link bukti tidak boleh kosong :)")
     return;
   }
   axios.post('https://spmi.annafilah.id/api/submitLink', {data: {idBukti: props.idBukti, judul_link: judulLink.value, link: link.value}})
