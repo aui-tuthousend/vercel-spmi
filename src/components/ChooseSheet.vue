@@ -28,9 +28,9 @@ watchEffect(async ()=> {
   <div class="bodi">
     <div class="c1">
       <div class="c1-1">
-        <h1 class="font-rubik">Mode Super User</h1>
+        <h1 v-once class="font-rubik">Mode Super User</h1>
 
-        <custom-button>
+        <custom-button v-once>
           <router-link
               to="/import"
               class="custom-router-link"
@@ -42,17 +42,17 @@ watchEffect(async ()=> {
     </div>
 
     <div class="c2">
-      <h2 class="font-garmond">Pilih Jurusan:</h2>
+      <h2 v-once class="font-garmond">Pilih Jurusan:</h2>
       <div>
 
-        <custom-select :data="jur" :wid="50" @response="(data) => jurusan = data"/>
+        <custom-select v-once :data="jur" :wid="50" @response="(data) => jurusan = data"/>
 
-        <p v-if="loading">Loading...</p>
+        <p v-if="loading" >Loading...</p>
         <div v-if="per.length === 0">
           <p v-if="jurusan !== 'a'" :hidden="loading">Sheet dengan jurusan {{ jurusan }} belum ada</p>
         </div>
         <div v-else class="periode">
-          <h2 class="font-garmond">Pilih Periode:</h2>
+          <h2 v-once class="font-garmond">Pilih Periode:</h2>
 
           <div class="row-ai-c">
 
@@ -64,7 +64,7 @@ watchEffect(async ()=> {
             <router-link
                 :to="{ name: 'Sheet', params: {jurusan: jurusan, periode: periode}}"
                 class="custom-router-link">
-              <h3>go</h3></router-link>
+              <h3 v-once>go</h3></router-link>
           </custom-button>
           </div>
         </div>
