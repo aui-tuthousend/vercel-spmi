@@ -39,7 +39,7 @@ const refreshPage = () => {
 <template>
   <div class="bodi">
 
-    <h2 class="font-poppin">Tipe:</h2>
+    <h2 class="font-poppin" v-once>Tipe:</h2>
     <custom-select :data="tipeSheet" :wid="20" @response="(data) => currentSheet = data"/>
     <br>
     <br>
