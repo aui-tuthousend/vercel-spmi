@@ -86,12 +86,12 @@ const openPopup = (indicator) =>{
 
 <template>
   <br>
-  <h2 class="font-poppin">Role: </h2>
+  <h2 class="font-poppin" v-once>Role: </h2>
 
   <custom-select :data="roleUser" :wid="10" @response="(data) => role = data"/>
   <br>
   <br>
-  <custom-button @click="submitData">Save</custom-button>
+  <custom-button v-once @click="submitData">Save</custom-button>
   <div class="table">
   <table :class="role" class="table-responsive table-danger">
     <thead>
@@ -161,8 +161,8 @@ const openPopup = (indicator) =>{
   </div>
 
   <Modal v-if="popupTriggers"
-         :idBukti="selectedIndicator"
          :togglePopup="togglePopup"
+         :idBukti="selectedIndicator"
          :role="role"
   >
   </Modal>
