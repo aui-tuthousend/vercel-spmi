@@ -67,12 +67,14 @@ const submitData = () => {
 
 const popupTriggers = ref(false)
 const selectedIndicator = ref(null)
+const tipeLink = ref(null);
 const togglePopup = () => {
   popupTriggers.value = !popupTriggers.value
 }
 
-const openPopup = (indicator) =>{
+const openPopup = (indicator, tipe) =>{
   selectedIndicator.value = indicator;
+  tipeLink.value = tipe;
   togglePopup();
 }
 
@@ -130,7 +132,7 @@ const openPopup = (indicator) =>{
           <button
               v-if="indicator.idBukti !== '' "
               class="pop"
-              @click="openPopup(indicator.idBukti)">Link
+              @click="openPopup(indicator.idBukti, 'Pelaksanaan')">Link
           </button>
         </td>
 
@@ -149,7 +151,7 @@ const openPopup = (indicator) =>{
             <button
                 v-if="indicator.idEvaluasi !== '' "
                 class="pop"
-                @click="openPopup(indicator.idEvaluasi)">Link
+                @click="openPopup(indicator.idEvaluasi, 'Evaluasi')">Link
             </button>
           </td>
         </template>
@@ -163,8 +165,8 @@ const openPopup = (indicator) =>{
   <Modal v-if="popupTriggers"
          :togglePopup="togglePopup"
          :idBukti="selectedIndicator"
-         :role="role"
-  >
+         :tipe="tipeLink"
+         :role="role">
   </Modal>
 </template>
 
