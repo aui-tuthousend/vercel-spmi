@@ -1,6 +1,6 @@
 <script setup>
 import {ref, watch, watchEffect} from "vue";
-import {useMagicKeys} from "@vueuse/core";
+import {onClickOutside, useMagicKeys} from "@vueuse/core";
 import CustomLink from "@/components/comp/custom-link.vue";
 const {escape} = useMagicKeys()
 
@@ -8,6 +8,7 @@ const props = defineProps({
   togglePopup: Function,
   idBukti: Number,
   role: String,
+  tipe: String
 });
 
 watch(escape, (v) =>{
@@ -16,11 +17,13 @@ watch(escape, (v) =>{
   }
 })
 
+const modal = ref(null);
+onClickOutside(modal, ()=> (props.togglePopup()))
+
 const link = ref('')
 const judulLink = ref('')
 const count = ref(0);
 const loading = ref(true);
-
 const savedLink = ref([]);
 
 watch(count, async () => {
@@ -41,7 +44,7 @@ watchEffect(async ()=> {
   savedLink.value = await response.json();
   loading.value = false;
 
-  console.log(count.value);
+  // console.log(count.value);
 })
 
 const addLink = () => {
@@ -80,17 +83,17 @@ const openLink = (link) => {
 
 <template>
   <div class="popup">
-    <div class="popup-inner">
+    <div class="popup-inner" ref="modal">
       <slot/>
-      <h2 class="lb font-rubik">Link Bukti Pelaksanaan</h2>
+      <h2 class="lb font-rubik">Link Bukti {{props.tipe}}</h2>
 
       <p v-if="loading">Loading...</p>
       <p v-if="savedLink.length < 1" :hidden="loading">Belum ada Link</p>
-      <ul>
+      <ol>
         <li v-for="link in savedLink" :key="link.id">
           <custom-link :link="link" :open="openLink" :remove="removeTodo" />
         </li>
-      </ul>
+      </ol>
 
       <div v-if="props.role === 'pelaksanaan'" class="addLink">
         <input v-model="judulLink" required placeholder="judul link">
@@ -125,6 +128,8 @@ const openLink = (link) => {
   margin-bottom: 10rem;
   background: #FFF;
   padding: 32px;
+  border-radius: 1rem;
+  box-shadow: 0 10px 5px 2px rgba(0,0,0,0.1);
 }
 
 .lb{
