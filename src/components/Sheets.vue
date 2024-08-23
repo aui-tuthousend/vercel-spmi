@@ -1,5 +1,5 @@
 <script setup>
-import {defineAsyncComponent, ref} from "vue";
+import {computed, defineAsyncComponent, ref} from "vue";
 import CustomButton from "@/components/comp/custom-button.vue";
 import CustomSelect from "@/components/comp/custom-select.vue";
 const Modal = defineAsyncComponent(({
@@ -13,6 +13,13 @@ const formData = ref([])
 const dataEval = ref([])
 const roleUser = ['pelaksanaan', 'superUser'];
 const role = ref(roleUser[0]);
+const search = ref('');
+
+const standars =computed(() => {
+  return props.data.filter (stand =>
+    stand.standar.toLowerCase().includes(search.value.toLowerCase())
+  )
+})
 
 const adjusment = ['melampaui', 'mencapai', 'belum mencapai','menyimpang'];
 
@@ -94,6 +101,10 @@ const openPopup = (indicator, tipe) =>{
   <br>
   <br>
   <custom-button v-once @click="submitData">Save</custom-button>
+  <br>
+
+  <input v-model="search" placeholder="search standar">
+
   <div class="table">
   <table :class="role" class="table-responsive table-danger">
     <thead>
@@ -116,7 +127,7 @@ const openPopup = (indicator, tipe) =>{
     </tr>
     </thead>
     <tbody>
-    <template v-for="(standar, index) in data" :key="index">
+    <template v-for="(standar, index) in standars" :key="index">
       <tr>
         <td :rowspan="standar.indicators.length+1">{{ standar.standar }}</td>
       </tr>
