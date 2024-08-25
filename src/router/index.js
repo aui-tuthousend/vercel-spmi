@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Sheet from "@/components/Sheet.vue";
 import Import from "@/components/import/import.vue";
 import PlayGround from "@/components/PlayGround.vue";
+import Pengendalian from "@/components/pengendalian.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,12 +11,20 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        enterClass: 'animate__animated animate__fadeInLeft',
+        leaveClass: 'animate__animated animate__fadeOutRight'
+      },
     },
     {
       path: '/sheet/:jurusan/:periode',
       name: 'Sheet',
-      component: Sheet
+      component: Sheet,
+      meta: {
+        enterClass: 'animate__animated animate__fadeInRight',
+        leaveClass: 'animate__animated animate__fadeOutLeft'
+      },
     },
     {
       path: '/import',
@@ -26,6 +35,11 @@ const router = createRouter({
       path: '/playground',
       name: 'Playground',
       component: PlayGround
+    },
+    {
+      path: '/pengendalian',
+      name: 'pengendalian',
+      component: Pengendalian
     },
   ]
 })

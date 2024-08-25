@@ -17,12 +17,13 @@ watchEffect(async ()=> {
   per.value = await response.json();
   loading.value = false;
 
-  console.log(per)
+  // console.log(per)
 })
 
 </script>
 
 <template>
+<!--  <router-link to="/pengendalian">kendali</router-link>-->
 <!--  <router-link to="/playground">playground</router-link>-->
 
   <div class="bodi">
@@ -81,7 +82,7 @@ watchEffect(async ()=> {
 .bodi{
   width: 100vw;
   height: 100vh;
-  padding: 3%;
+  //padding: 3%;
   background: white;
   color: black;
 }

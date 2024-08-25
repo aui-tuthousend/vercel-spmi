@@ -3,7 +3,7 @@ import ChooseSheet from "@/components/ChooseSheet.vue";
 </script>
 
 <template>
-  <main>
+  <main class="bodii">
     <ChooseSheet/>
   </main>
 </template>

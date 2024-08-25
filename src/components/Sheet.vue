@@ -26,7 +26,7 @@ watchEffect(async ()=> {
   standarData.value = await response.json();
 
   loading.value = false;
-  console.log(standarData)
+  // console.log(standarData)
 })
 
 const refreshPage = () => {
@@ -37,7 +37,7 @@ const refreshPage = () => {
 
 
 <template>
-  <div class="bodi">
+  <div class="bodii">
 
     <h2 class="font-poppin" v-once>Tipe:</h2>
     <custom-select :data="tipeSheet" :wid="20" @response="(data) => currentSheet = data"/>
@@ -58,6 +58,16 @@ const refreshPage = () => {
     <div v-if="standarData ==='Null'">
       Belum ada data :)
     </div>
+<!--    <Suspense>-->
+<!--      <template #default>-->
+<!--        <Sheets-->
+<!--            :data="standarData"-->
+<!--            :refresh="refreshPage"/>-->
+<!--      </template>-->
+<!--      <template #fallback>-->
+<!--        Loading...-->
+<!--      </template>-->
+<!--    </Suspense>-->
     <div v-else class="dt">
       <Sheets
           :data="standarData"

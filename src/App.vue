@@ -2,9 +2,20 @@
 </script>
 
 <template>
-  <RouterView />
+  <RouterView v-slot="{ Component, route }">
+    <transition
+        :enter-active-class="route.meta.enterClass"
+        :leave-active-class="route.meta.leaveClass"
+    >
+    <component :is="Component"/>
+    </transition>
+  </RouterView>
 </template>
 
-<style scoped>
-
+<style>
+.bodii{
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+}
 </style>
