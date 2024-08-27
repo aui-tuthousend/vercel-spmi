@@ -95,7 +95,7 @@ const openPopup = (indicator, tipe) =>{
 
 <template>
   <br>
-  <h2 class="font-poppin" v-once>Role: </h2>
+  <h2 class="" v-once>Role: </h2>
 
   <custom-select :data="roleUser" :wid="10" @response="(data) => role = data"/>
   <br>
@@ -103,26 +103,26 @@ const openPopup = (indicator, tipe) =>{
   <custom-button v-once @click="submitData">Save</custom-button>
   <br>
 
-  <input v-model="search" placeholder="search standar">
+  <input v-model="search" class="w-auto" placeholder="search standar">
 
   <div class="table">
-  <table :class="role" class="table-responsive table-danger">
+  <table :class="role">
     <thead>
     <tr>
-      <th colspan="3"><h3 class="font-poppin">Penetapan</h3></th>
-      <th colspan="2"><h3 class="font-poppin">Pelaksanaan</h3></th>
-      <th colspan="5" v-if="role === 'superUser'"><h3 class="font-poppin">Evaluasi</h3></th>
+      <th colspan="3"><h4 class="font-poppin">Penetapan</h4></th>
+      <th colspan="2"><h4 class="font-poppin">Pelaksanaan</h4></th>
+      <th colspan="5" v-if="role === 'superUser'"><h4 class="font-poppin">Evaluasi</h4></th>
     </tr>
     <tr>
-      <th rowspan=""><h3 class="font-poppin">Standar</h3></th>
-      <th><h3 class="font-poppin">Indicator</h3></th>
-      <th><h3 class="font-poppin">Target</h3></th>
-      <th><h3 class="font-poppin">Komentar</h3></th>
-      <th><h3 class="font-poppin">Link Bukti</h3></th>
+      <th rowspan=""><h5 class="font-poppin">Standar</h5></th>
+      <th><h5 class="font-poppin">Indicator</h5></th>
+      <th><h5 class="font-poppin">Target</h5></th>
+      <th><h5 class="font-poppin">Komentar</h5></th>
+      <th><h5 class="font-poppin">Link Bukti</h5></th>
       <template v-if="role === 'superUser'">
-        <th colspan="2"><h3 class="font-poppin">Komentar</h3></th>
-        <th colspan="2"><h3 class="font-poppin">Adjusment</h3></th>
-        <th><h3 class="font-poppin">Link Bukti</h3></th>
+        <th colspan="2"><h5 class="font-poppin">Komentar</h5></th>
+        <th colspan="2"><h5 class="font-poppin">Adjusment</h5></th>
+        <th><h5 class="font-poppin">Link Bukti</h5></th>
       </template>
     </tr>
     </thead>
@@ -177,6 +177,7 @@ const openPopup = (indicator, tipe) =>{
          :togglePopup="togglePopup"
          :idBukti="selectedIndicator"
          :tipe="tipeLink"
+         :popupTriggers="popupTriggers"
          :role="role">
   </Modal>
 </template>

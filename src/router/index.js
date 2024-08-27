@@ -29,7 +29,11 @@ const router = createRouter({
     {
       path: '/import',
       name: 'Import',
-      component: Import
+      component: Import,
+      meta: {
+        enterClass: 'animate__animated animate__fadeInRight',
+        leaveClass: 'animate__animated animate__fadeOutLeft'
+      },
     },
     {
       path: '/playground',

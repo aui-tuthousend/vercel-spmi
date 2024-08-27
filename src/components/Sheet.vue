@@ -38,15 +38,13 @@ const refreshPage = () => {
 
 <template>
   <div class="bodii">
-
-    <h2 class="font-poppin" v-once>Tipe:</h2>
+    <h2 class="" v-once>Tipe:</h2>
     <custom-select :data="tipeSheet" :wid="20" @response="(data) => currentSheet = data"/>
     <br>
     <br>
     <div class="row">
-
     <template v-for="t in tipe">
-      <div class="row">
+      <div class="col-1">
       <input type="radio"
              :id="t"
              :value="t"
@@ -58,16 +56,6 @@ const refreshPage = () => {
     <div v-if="standarData ==='Null'">
       Belum ada data :)
     </div>
-<!--    <Suspense>-->
-<!--      <template #default>-->
-<!--        <Sheets-->
-<!--            :data="standarData"-->
-<!--            :refresh="refreshPage"/>-->
-<!--      </template>-->
-<!--      <template #fallback>-->
-<!--        Loading...-->
-<!--      </template>-->
-<!--    </Suspense>-->
     <div v-else class="dt">
       <Sheets
           :data="standarData"
