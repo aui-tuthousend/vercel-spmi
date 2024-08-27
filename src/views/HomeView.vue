@@ -32,6 +32,7 @@ import ChooseSheet from "@/components/ChooseSheet.vue";
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
+    text-align: center;
   }
 
   body {
